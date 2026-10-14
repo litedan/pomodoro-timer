@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="A simple, customizable Pomodoro timer.">
+  <title>Pomodoro — Focus Timer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <a class="logo" href="./" aria-label="Pomodoro home">
+        <span class="logo-icon" aria-hidden="true">◷</span>
+        Pomodoro
+      </a>
+      <button id="settings-button" class="icon-button"
+              aria-label="Open timer settings"
+              aria-controls="settings" aria-expanded="false">
+        ⚙
+      </button>
+    </header>
+
+    <section class="timer-card" aria-labelledby="session-title">
+      <div class="session-tabs" role="group" aria-label="Session type">
+        <button class="session-tab active" data-mode="work"
+                aria-pressed="true">Focus</button>
+        <button class="session-tab" data-mode="short"
+                aria-pressed="false">Short break</button>
+        <button class="session-tab" data-mode="long"
+                aria-pressed="false">Long break</button>
+      </div>
+
+      <h1 id="session-title">Time to focus</h1>
+
+      <div id="timer" class="timer" role="timer"
+           aria-label="Time remaining" aria-live="off">25:00</div>
+
+      <p id="session-status" class="status" role="status">
+        Ready when you are.
+      </p>
+
+      <div class="controls">
+        <button id="start-button" class="primary-button">Start</button>
+        <button id="reset-button" class="secondary-button"
+                aria-label="Reset current timer">↻</button>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Session statistics">
+      <div class="stat">
+        <span id="completed-count" class="stat-number">0</span>
+        <span class="stat-label">Sessions completed</span>
+      </div>
+      <div class="stat">
+        <span id="cycle-count" class="stat-number">0/4</span>
+        <span class="stat-label">Sessions this cycle</span>
+      </div>
+    </section>
+
+    <section id="settings" class="settings" hidden
+             aria-labelledby="settings-title">
+      <h2 id="settings-title">Timer settings</h2>
+
+      <form id="settings-form">
+        <label>
+          Focus duration (minutes)
+          <input id="work-duration" type="number"
+                 min="1" max="120" value="25" required>
+        </label>
+
+        <label>
+          Short break (minutes)
+          <input id="short-duration" type="number"
+                 min="1" max="60" value="5" required>
+        </label>
+
+        <label>
+          Long break (minutes)
+          <input id="long-duration" type="number"
+                 min="1" max="120" value="15" required>
+        </label>
+
+        <label>
+          Focus sessions before long break
+          <input id="cycle-duration" type="number"
+                 min="2" max="12" value="4" required>
+        </label>
+
+        <button class="primary-button" type="submit">
+          Save settings
+        </button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p>One thing at a time. Make it count.</p>
+    </footer>
+  </main>
+</body>
+</html>
